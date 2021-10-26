@@ -1,0 +1,141 @@
+<?php
+    include 'partials/_dbconnect.php';
+    $cat_list_id = $_GET['category_list_id'];
+    $sql = "SELECT * FROM `learning` WHERE cat_list_id='$cat_list_id'";
+    $result = mysqli_query($connect, $sql);
+
+
+     
+?>
+
+
+
+    <!doctype html>
+    <html lang="en">
+
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+
+        <title>MyReference - Home</title>
+        <link rel="stylesheet" href="/myreference/static/css/home.css">
+        <link rel="stylesheet" href="/myreference/static/css/video_player.css">
+        <style>
+            iframe {
+                /* width: 250px; */
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+                /* text-align: center; */
+            }
+            
+            .leftContainer {
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            }
+            
+            .rithContainer {
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            }
+        </style>
+    </head>
+
+    <body>
+        <!-- MAIN CONTAINER STARTS HERE -->
+        <?php include 'partials/_header.php';  ?>
+
+
+        <div class="mainContainer bg-light">
+            <div class="leftContainer">
+                <div class="player">
+                    <iframe width="950px" height="550px" src="https://www.youtube.com/embed/at19OmH2Bg4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+                </div>
+                <div class="titleDesc">
+                    i am title and description
+                </div>
+                <div class="notes">
+                    i am notes
+                </div>
+                <div class="comments">
+                    i am comments
+                </div>
+            </div>
+            <div class="rithContainer">
+                <div class="playlist">
+                    <h2 class="m-1 card-title">All Video Playlist</h2>
+                    <hr>
+                    <div class="aboutcwh">
+                        <p>
+                            <a class="btn btn-warning collapsed" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Hide Player</a>
+                        </p>
+
+                        <div class="row">
+                            <div class="col">
+                                <div class="collapse.show multi-collapse" id="multiCollapseExample1">
+                                    <div class="card card-body">
+                                        ' . $title . '
+                                    </div>
+                                </div>
+                            </div>
+                        </div>';
+
+
+
+                    </div>
+
+
+                    <?php
+                    while ($row=mysqli_fetch_assoc($result)) {
+                        $id =  $row['sno'];
+                        $link =  $row['video_link'];
+                        $title =  $row['video_title'];
+                        $description =  $row['video_description'];
+
+                        ?>
+
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- <?php
+    while ($row=mysqli_fetch_assoc($result)) {
+        $id =  $row['sno'];
+        $link =  $row['video_link'];
+        $title =  $row['video_title'];
+        $description =  $row['video_description'];
+        echo'<ul>
+                 <li>'.$id.'. '.$title.'</li>
+                 <li>'.$link.'</li>
+            </ul>';
+    }
+
+    ?> -->
+
+        </div>
+        <!-- FOOTER HERE  -->
+        <?php include 'partials/_footer.php';  ?>
+
+
+
+
+
+        <!-- Optional JavaScript; choose one of the two! -->
+        <!-- Option 1: Bootstrap Bundle with Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous">
+        </script>
+
+        <!-- Option 2: Separate Popper and Bootstrap JS -->
+        <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
+        integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js"
+        integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous">
+    </script> -->
+
+    </body>
+
+    </html>
